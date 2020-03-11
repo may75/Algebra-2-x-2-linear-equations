@@ -1,0 +1,54 @@
+class linearequation:
+    # defines the linearequation class with a, b, c, d, e and f arguments
+    def __init__(self, a, b, c, d, e, f):
+        self.__a = a
+        self.__b = b
+        self.__c = c
+        self.__e = e
+        self.__d = d
+        self.__f = f
+ # define the geta , getb, getc, getd, and getf return value of a,b,c,d,e and f  
+    def geta(self):
+        return float(self.__a)
+    def getb(self):
+        return float(self.__b)
+    def getc(self):
+        return float(self.__c)
+    def getd(self):
+        return float(self.__d)
+    def gete(self):
+        return float(self.__e)
+    def getf(self):
+        return float(self.__f)
+    # define getx method to calculate x value from the argument values
+    def get_x(self):
+        variable1 = (self.gete() * self.getd()) - (self.getb() * self.getf())
+        variable2 = (self.geta() * self.getd()) - (self.getb() * self.getc())
+        return float(variable1 / variable2)
+    # define gety method to calculate y value from the argument values
+    def get_y(self):
+        variable1 = (self.geta() * self.getf()) - (self.gete() * self.getc())
+        variable2 = (self.geta() * self.getd()) - (self.getb() * self.getc())
+        return float(variable1 / variable2)
+# define is_solvable method to return the calculated value to judge the equation       
+    def is_solvable(self):
+       if((self.geta() * self.getd()) - (self.getb() * self.getc()) != 0):
+           return True
+    # define main method to declare object of linearequation       
+if __name__ == '__main__':
+    
+    print("The two equations of the system are: ")
+    print(' ' * 10 + 'ax + by = e')
+    print(' ' * 10 + 'cx + dy = f')
+    # prompet from user to enter the six values of a,b,c,d,e,f arguments
+    a, b, c,d, e, f = input("\nEnter the six coefficients numbers for  "\
+                    "eqaution by using coma: ").split(',')
+    # depend on is_solvable method value call get_x and get_y methods
+    mysystem = linearequation (a, b, c, d, e, f)
+   
+    if not mysystem.is_solvable():
+        print("\nThe equation has no solution")
+    else:
+        print("\nx = ", mysystem.get_x())
+        print("y = ", mysystem.get_y())
+    
